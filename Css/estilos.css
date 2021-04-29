@@ -87,7 +87,7 @@ img {
 
 .header__texto {
     position: relative;
-    top: -5rem;
+    top: -6rem;
     text-align: center;
     color: var(--blanco);
     text-transform: uppercase;
@@ -627,4 +627,55 @@ img {
 .amarillo{
     background-color: yellow;
     text-transform: uppercase;
+}
+.menu-header-barra{
+    padding: 2rem;
+    background-color: black;
+    margin-bottom: 20rem;
+}
+
+.menu-headerprincipal{
+    background-image: url(/Imagenes/perfil.png);
+    height: 25rem;/*Esto es para mostrar la imagen completa*/
+    background-size: cover;/*Para que ocupe todo el espacio*/
+    background-repeat: no-repeat;
+    background-position: center center;/*Esto es para cuando hagamos pequeña la ventana se centre la img*/
+    background-color: rgba(73, 7, 7, 0.6);
+}
+.menu-header-nav{
+    background-color: black;
+    padding: 0.3rem;
+    margin-top: 15rem;
+
+}
+.menu-nav{
+    display: flex;
+    justify-content: space-evenly;
+}
+.menu-nav button{
+    background-color: black;
+    color: white;
+    font-family: var(--fuenteSecundaria);
+    font-size: 2rem;
+    border: none;
+    cursor: pointer;
+}
+.menu-nav button:hover{
+    background-color: white;
+    color:black;
+    
+}
+.barra-negraa{
+    margin-top: 20rem;
+    color: yellow;
+    gap: 1rem;
+}
+.menu-titulo{
+    max-width: 100rem;
+    width: 90%; /*Para que el texto no se vaya para todas las orillas*/
+    margin: 0 auto;
+}
+.menu-titulo h1{
+    font-family: var(--fuenteSecundaria);
+    color: black;
 }
