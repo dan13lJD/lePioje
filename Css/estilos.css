@@ -1,70 +1,95 @@
-:root{
-    --blanco:#ffff;
+:root {
+    --blanco: #ffff;
     --fuentePirncipal: 'Antonio', sans-serif;
     --fuenteSecundaria: 'Bebas Neue', cursive;
 }
-body{
+
+body {
 
     font-family: var(--fuenteParrafos);
     font-size: 1.6rem;
     line-height: 2;
 
 }
+
 /*GLOBALES*/
-.contenedor{
+.contenedor {
     max-width: 120rem;
-    width: 90%; /*Para que el texto no se vaya para todas las orillas*/
-    margin: 0 auto;/*PARA CENTRAR*/
+    width: 90%;
+    /*Para que el texto no se vaya para todas las orillas*/
+    margin: 0 auto;
+    /*PARA CENTRAR*/
 
 }
-a{
+
+a {
     text-decoration: none;
 }
-h1, h2,h3,h4{
+
+h1,
+h2,
+h3,
+h4 {
     font-family: var(--fuentePirncipal);
     line-height: 1.2;
-    
+
 }
-h1{
+
+h1 {
     font-size: 4.8rem;
 }
-h2{
+
+h2 {
     font-size: 4rem;
 }
-h3{
+
+h3 {
     font-size: 3.2rem;
 }
-h4{
+
+h4 {
     font-size: 2.8rem;
 }
-img{
+
+img {
     max-width: 100%;
 
 }
-.no-margin{
-    margin:0;
+
+.no-margin {
+    margin: 0;
 }
-.no-padding{
+
+.no-padding {
     padding: 0;
 }
-.centrar-texto{
+
+.centrar-texto {
     text-align: center;
 }
-.header{
+
+.header {
     background-image: url(/Imagenes/baner.jpg);
-    height: 35rem;/*Esto es para mostrar la imagen completa*/
-    background-size: cover;/*Para que ocupe todo el espacio*/
+    height: 35rem;
+    /*Esto es para mostrar la imagen completa*/
+    background-size: cover;
+    /*Para que ocupe todo el espacio*/
     background-repeat: no-repeat;
-    background-position: center center;/*Esto es para cuando hagamos pequeña la ventana se centre la img*/
+    background-position: center center;
+    /*Esto es para cuando hagamos pequeña la ventana se centre la img*/
     background-color: rgba(73, 7, 7, 0.6);
-    
+}
+
+.header-interno {
+    background-color: rgb(0, 0, 0);
 
 }
-.header__texto{
+
+.header__texto {
     position: relative;
     top: -6rem;
     text-align: center;
-    color:var(--blanco);
+    color: var(--blanco);
     text-transform: uppercase;
     margin-top: 9rem;
     font-family: var(--fuentePirncipal);
@@ -72,241 +97,530 @@ img{
 
 
 }
-.header__texto__h2{
-    font-size: 1rem;
-}
-.header__texto__p{
+
+.header__texto__h2 {
     font-size: 1rem;
 }
 
-@media (min-width: 768px){
-     .header__texto{
-         margin-top: 15rem;
-         color: var(--blanco);
-     }
-     .header__texto__h2{
-         font-size: 4rem;
-     }
-     .header__texto__p{
-         font-size: 3rem;
-     }
+.header__texto__p {
+    font-size: 1rem;
 }
-@media (min-width: 768px){
-    .barra{
-        display: flex;
-        justify-content: space-between;/*Alinear horizontal*/
-        align-items: center;/*Alinear en vertical*/
+
+@media (min-width: 768px) {
+    .header__texto {
+        margin-top: 15rem;
+        color: var(--blanco);
     }
-     
+
+    .header__texto__h2 {
+        font-size: 4rem;
+    }
+
+    .header__texto__p {
+        font-size: 3rem;
+    }
 }
-.logo{
-    color:var(--blanco);
+
+@media (min-width: 768px) {
+    .barra {
+        display: flex;
+        justify-content: space-between;
+        /*Alinear horizontal*/
+        align-items: center;
+        /*Alinear en vertical*/
+    }
+
 }
-.logo__nombre{
+
+.logo {
+    color: var(--blanco);
+}
+
+.logo__nombre {
     font-weight: 400;
 }
-.logo__bold{
+
+.logo__bold {
     font-weight: 700;
 }
-@media (min-width: 768px){
-    .navegacion{
+
+@media (min-width: 768px) {
+    .navegacion {
         display: flex;
         gap: 2rem;
     }
-     
+
 }
-.navegacion__enlace{
-    display: block;/*Para que los enlaces esten abajo de otro*/
+
+.navegacion__enlace {
+    display: block;
+    /*Para que los enlaces esten abajo de otro*/
     text-align: center;
     font-size: 1.8rem;
-    color:var(--blanco);
+    color: var(--blanco);
     font-family: var(--fuenteSecundaria);
     text-transform: uppercase;
     margin-top: 2.5rem;
 }
-.navegacion__enlace:hover{
-    color:yellow;
+
+.navegacion__enlace:hover {
+    color: yellow;
 }
-.logo_imagen{
+
+.logo_imagen {
     margin-top: 1.3rem;
     width: 15rem;
 }
-@media (min-width: 768px){
-     .contenido-principal{
-         display:grid;
-         grid-template-columns: 2fr 1fr;
-         column-gap: 2rem;
-     }
+
+@media (min-width: 768px) {
+    .contenido-principal {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        column-gap: 2rem;
+    }
 }
-.entrada{
+
+.entrada {
     border-bottom: 1px solid var(--gris);
     margin-bottom: 2rem;
 }
-.entrada:last-of-type{/*Esto es para que no aplique el borde inferior al ultimo elemento del blog*/
-    border:none;
+
+.entrada:last-of-type {
+    /*Esto es para que no aplique el borde inferior al ultimo elemento del blog*/
+    border: none;
     margin-bottom: 0;
 }
-.boton{
-    display: block;/*Elegimos este display para que en los dispostivios pequeños tome todo el espacio*/
+
+.boton {
+    display: block;
+    /*Elegimos este display para que en los dispostivios pequeños tome todo el espacio*/
     font-family: var(--fuentePirncipal);
-    color:white;
+    color: white;
     text-align: center;
-    padding: 1rem 3rem;/*grosor del boton*/
-    font-size: 1.8rem;/*Tamaño de letra*/
+    padding: 1rem 3rem;
+    /*grosor del boton*/
+    font-size: 1.8rem;
+    /*Tamaño de letra*/
     text-transform: uppercase;
-    font-weight: 700;/*Esto es para hacer negritas las letras*/
+    font-weight: 700;
+    /*Esto es para hacer negritas las letras*/
     margin-bottom: 2rem;
     border: none;
     background-color: black;
 }
-.boton:hover{
+
+.boton:hover {
     background-color: yellow;
-    color:black;
+    color: black;
 }
-@media (min-width: 768px){/*Esto es para que los botones sean chicos en pantalla grande*/
-    .boton{
+
+@media (min-width: 768px) {
+
+    /*Esto es para que los botones sean chicos en pantalla grande*/
+    .boton {
         display: inline-block;
     }
 }
-.boton:hover{
-    cursor: pointer;/*Para hacer que cuando estemos en el boton aparezca la manita*/
+
+.boton:hover {
+    cursor: pointer;
+    /*Para hacer que cuando estemos en el boton aparezca la manita*/
 }
-.boton--primario{
+
+.boton--primario {
     background-color: var(--negro);
 
 }
-.boton--secundario{
+
+.boton--secundario {
     background-color: var(--primario);
 }
-.cursos{
-    list-style: none;/*Para quitar villetas de la lista*/
+
+.cursos {
+    list-style: none;
+    /*Para quitar villetas de la lista*/
 }
-.widget-curso{
-    border-bottom: 1px solid var(--gris);/*Para la barrita de abajo que separa*/
+
+.widget-curso {
+    border-bottom: 1px solid var(--gris);
+    /*Para la barrita de abajo que separa*/
     margin-bottom: 2rem;
 }
-.widget-curso:last-of-type{/*Esto es para que no le agrege la barra al final de un elemento*/
+
+.widget-curso:last-of-type {
+    /*Esto es para que no le agrege la barra al final de un elemento*/
     border: none;
     margin-bottom: 0;
 }
-.widget-curso__label{
+
+.widget-curso__label {
     font-family: var(--fuenteHeading);
     font-weight: bold;
 
 }
-.widget-curso__info{
+
+.widget-curso__info {
     font-weight: 400;
 
 }
+
 .widget-curso__info,
-.widget-curso__label{
+.widget-curso__label {
     font-size: 2rem;
 }
-.footer{
+
+.footer {
     background-color: var(--negro);
     padding-top: 4rem 0;
     margin-top: 4rem;
 }
+
 /*SOBRE NOSOTROS*/
-@media (min-width:768px){
-    .sobre-nosotros{
+@media (min-width:768px) {
+    .sobre-nosotros {
         display: grid;
         grid-template-columns: 2fr 1fr;
         gap: 2rem;
     }
-      
+
 }
-.curso{
-    padding: 3rem 0; 
-    border-bottom: 1px solid var(--gris);  
+
+.curso {
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--gris);
 }
-@media (min-width: 768px){
-    .curso{
+
+@media (min-width: 768px) {
+    .curso {
         display: grid;
         grid-template-columns: 1fr 2fr;
         gap: 2rem;
     }
-     
+
 }
-.curso:last-of-type{
+
+.curso:last-of-type {
     border-bottom: none;
 }
-.curso__label{
+
+.curso__label {
     font-family: var(--fuenteHeading);
     font-weight: bold;
 
 }
-.curso__info{
+
+.curso__info {
     font-weight: 400;
 
 }
+
 .curso__info,
-.curso__label{
+.curso__label {
     font-size: 2rem;
 }
+
 /*CONTACTO*/
-.contacto-bg{
+.contacto-bg {
     background-image: url(../img/contacto.jpg);
-    height: 40rem/*PARA HACER MAS GRANDE LA IMAGEN*/;
+    height: 40rem
+        /*PARA HACER MAS GRANDE LA IMAGEN*/
+    ;
     background-size: cover;
 }
-.formulario{
+
+.formulario {
     background-color: var(--blanco);
-    margin: -5rem auto 0 auto;/*Esto es para que el margen se eleve para arriba*/
+    margin: -5rem auto 0 auto;
+    /*Esto es para que el margen se eleve para arriba*/
     width: 95%;
-    padding: 5rem;/*Esto hace que todo se centre y no quede por los bordes*/
+    padding: 5rem;
+    /*Esto hace que todo se centre y no quede por los bordes*/
 }
-.campo{
+
+.campo {
     display: flex;
     margin-bottom: 2rem;
-    gap:2rem;
+    gap: 2rem;
 
 
 }
-.campo__label{
+
+.campo__label {
     flex: 0 0 9rem;
-    text-align: right;/*´Para que el texto sevaya a la derecha*/
-    
+    text-align: right;
+    /*´Para que el texto sevaya a la derecha*/
+
 
 }
-.campo__field{
-    flex:1;
-    border: 1px solid  var(--gris);/*Esto es para que le de formato al borde de los campos*/
+
+.campo__field {
+    flex: 1;
+    border: 1px solid var(--gris);
+    /*Esto es para que le de formato al borde de los campos*/
 }
-.campo__field--textarea{
+
+.campo__field--textarea {
     height: 20rem;
     /*Para hacer grande el textarea*/
 }
-.principal{
+
+.principal {
     display: block;
 }
-@media (min-width: 768px){
-    .principal{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    text-align: center;
-    gap: 2rem;
+
+@media (min-width: 768px) {
+    .principal {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        text-align: center;
+        gap: 2rem;
     }
 }
-.principal-mujer{
+
+.principal-mujer {
     background-image: url(/Imagenes/img1.jpg);
-    height: 20rem;/*Esto es para mostrar la imagen completa*/
-    background-size: cover;/*Para que ocupe todo el espacio*/
+    height: 20rem;
+    /*Esto es para mostrar la imagen completa*/
+    background-size: cover;
+    /*Para que ocupe todo el espacio*/
     background-repeat: no-repeat;
-    background-position: center center;/*Esto es para cuando hagamos pequeña la ventana se centre la img*/
+    background-position: center center;
+    /*Esto es para cuando hagamos pequeña la ventana se centre la img*/
     background-color: rgba(73, 7, 7, 0.6);
 }
-.ImagenNino{
+
+.ImagenNino {
     height: 32rem;
 }
-.footer{
+
+.footer {
     background-color: black;
     padding: 0.5rem;
 }
-.footer-texto{
-    color:white;
+
+.footer-texto {
+    color: white;
     text-align: center;
     font-family: var(--fuenteSecundaria);
+}
+
+/*Página del producto (carrito, página principal, página de compra, etc)*/
+
+
+.sidebar-social li {
+    text-align: center;
+    width: 31.9%;
+    margin-bottom: 3px !important;
+    display: inline-block;
+    font-size: 20px;
+    padding: 0;  
+    font-family: var(--fuenteSecundaria);  
+    
+}
+
+.sidebar-social i {
+    display: block;
+    margin: 0 10px 10px auto;
+    width: 70px;
+    height: 70px;
+    margin: 10px auto 0;
+    line-height: 32px;
+    text-align: center;
+    font-size: 20px;
+    color: #ffffff;
+    margin-top: 0;
+    padding-top: 5px;
+    
+}
+
+.sidebar-social i:hover{
+    color: yellow;
+}
+.sidebar-social a {
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar-social a span {
+    color: rgb(255, 255, 255);
+    font-size: 15px;
+    padding: 5px 0 10px 0;
+    display: block;
+    text-transform: uppercase;
+    font-family: 'Montserrat';
+    letter-spacing: 1px;
+    
+}
+
+/* CSS para posicionar el bade cerca del carrito*/
+.cart {
+    position: relative;
+}
+
+#cart_menu_num {
+    position: absolute;
+    top: 15%;
+    left: 55%;
+    background:yellow;
+    width: 15px;
+    height: 15px;
+    border-radius: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(0, 0, 0);
+    padding: 1px;
+    font-family: var(--fuenteSecundaria);
+}
+/* clase que invierte los colores de una imagen */
+.invertir{
+    -webkit-filter: invert(100%);
+    -moz-filter: invert(100%);
+    filter: invert(100%);
+}
+/* centrar la imagen del div */
+.centrador{
+    position: relative;
+    width: 90px;
+    height: 90px;    
+}
+.imagen{
+    position: absolute;
+    width: auto;        
+    top: 0;
+    left: 37.5rem;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+/* seccion principal de la página */
+.main{
+    background-color: whitesmoke;
+}
+
+.contenedor-productos{
+    display: grid;
+    grid-template-columns: 790px 440px;
+    column-gap: 0.5rem;
+}
+.imagenes{    
+    padding-left: 1rem;
+}
+
+/* estilos de la galeria */
+.galeria {
+	width: 100%;
+	margin: auto;
+	list-style: none;
+	padding: 2px;
+	/* box-sizing: border-box; */
+	
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+.galeria li {
+	margin: 5px;
+}
+
+.galeria img {
+	width: 150px;
+	height: 100px;
+}
+
+/*Estilos del modal*/
+
+.modal {
+	display: none;
+}
+
+.modal:target {
+	
+	display: block;
+	position: fixed;
+	background: rgba(0,0,0,0.8);
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+.imagen {
+	width: 100%;
+	height: 50%;
+	display: flex;
+	/* justify-content: center; */
+	align-content: center;
+    align-items: center;
+    margin-right: -350px;
+}
+
+.imagen a {
+	color: #fff;
+	font-size: 40px;
+	text-decoration: none;
+	margin: 0 10px;
+}
+
+.imagen a:nth-child(2) {
+    /* clase que da estilos a las flechas de direccion */
+	margin: 0;
+	height: 100%;
+	flex-shrink: 2;
+}
+
+.imagen img {
+	width: 500px;
+	height: 100%;
+	max-width: 100%;
+	border: 7px solid #fff;
+	box-sizing: border-box;
+    padding-right: 1;
+}
+
+.cerrar {
+	display: block;
+	background: #fff;
+	width: 25px;
+	height: 25px;
+	margin: 15px auto;
+	text-align: center;
+	text-decoration: none;
+	font-size: 25px;
+	color: #000;
+	padding: 5px;
+	border-radius: 50%;
+	line-height: 25px;
+}
+
+
+
+/* sección de la información */
+.informacion{
+    /* background-color: blue; */
+    border-width: 2px ;
+    border-style: solid;
+    border-radius: 0.5rem;
+    font-family: var(--fuenteSecundaria);
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin-right: 0.5rem;
+}
+.informacion p{
+    font-weight: 800;
+}
+.informacion p span{
+    font-weight: normal;
+}
+
+.amarillo{
+    background-color: yellow;
+    text-transform: uppercase;
 }
 .menu-header-barra{
     padding: 2rem;
@@ -358,6 +672,4 @@ img{
 .menu-titulo h1{
     font-family: var(--fuenteSecundaria);
     color: black;
-    
 }
-
