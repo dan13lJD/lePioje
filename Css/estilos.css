@@ -639,7 +639,7 @@ img {
 .menu-header-nav{
     background-color: black;
     padding: 0.3rem;
-    margin-top: 15rem;
+    margin-top: -2rem;
 
 }
 .menu-nav{
@@ -673,3 +673,49 @@ img {
     font-family: var(--fuenteSecundaria);
     color: black;
 }
+.registro-headerprincipal{
+    background-image: url(/Imagenes/imagen_registro.jpeg);
+    height: 25rem;/*Esto es para mostrar la imagen completa*/
+    background-size: cover;/*Para que ocupe todo el espacio*/
+    background-repeat: no-repeat;
+    background-position: center center;/*Esto es para cuando hagamos pequeña la ventana se centre la img*/
+    background-color: rgba(73, 7, 7, 0.6);
+}
+.registro-dividirFormulario{
+    display: block;
+}
+.registro-formulario button{
+    margin-left: auto;
+  margin-right: auto;
+}
+.centrar{
+    margin-left: auto;
+    margin-right: auto;   
+}
+@media (min-width: 768px){
+    .registro-dividirFormulario{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+.registro-formulario{
+    font-family: var(--fuenteSecundaria);
+    font-weight: 9rem;
+    color: black;
+    text-align: center;
+    border-bottom: 2rem;
+}
+.registro-formulario input, select{
+    display: block;
+    margin:0 auto;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    width: 90%;
+    font-family: var(--fuentePirncipal);
+    margin-bottom: 2rem;
+
+}
+.registro-formulario input:hover{
+    background-color: #EAEADA;
+}
+
