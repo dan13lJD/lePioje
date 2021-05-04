@@ -1,3 +1,20 @@
+<?php
+    require 'includes/app.php';
+    
+    $db = conectarDB();
+    $errores = [];
+
+
+    if($_SERVER['REQUEST_METHOD'] === 'POST'){
+        #filtrado de los datos
+        $email = mysqli_real_escape_string($db, filter_var($_POST['correo'], FILTER_VALIDATE_EMAIL));
+        $contrasenia = mysqli_real_escape_string($db, $_POST['contrasenia']);
+        #$email = mysqli_real_escape_string($db, filter-var($_POST['']));
+
+    }
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +31,7 @@
     <link rel="stylesheet" href="Css/estilos.css">
     <title>Registro</title>
 </head>
+
 <body>
     <header class="registro-headerprincipal">
         <div class="contenedor">
@@ -27,42 +45,41 @@
     </header>
     <div>
         <main>
-            <form action="" class="registro-dividirFormulario">
+            <form action="" class="registro-dividirFormulario" method="POST">
                 <div class="registro-formulario">
                     <label for="">Nombre</label>
-                    <input type="text" placeholder="tu nombre">
+                    <input type="text" placeholder="tu nombre" name="name">
                     <label for="">Apellido Materno</label>
-                    <input type="text" placeholder="Tu apellido Materno">
+                    <input type="text" placeholder="Tu apellido Materno" name="apMaterno">
                     <label for="">Telefono</label>
-                    <input type="tel" placeholder="Tu apellido Materno">
+                    <input type="tel" placeholder="Tu telefono" name="telefono">
                     <label for="">Estado</label>
-                    <input type="text" placeholder="Tu estado">
+                    <input type="text" placeholder="Tu estado" name="estado">
                     <label for="">Ciudad</label>
-                    <input type="text" placeholder="Tu ciudad">
+                    <input type="text" placeholder="Tu ciudad" name="ciudad">
                     <label for="">Calle</label>
-                    <input type="text" placeholder="Tu calle">
+                    <input type="text" placeholder="Tu calle" name="calle">
                     <label for="">Referencias</label>
-                    <input type="text" placeholder="Ingresar referencias">
+                    <input type="text" placeholder="Ingresar referencias" name="referencias">
                     
                 </div>
                 <div class="registro-formulario">
                     <label for="">Apellido Paterno</label>
-                    <input type="text" placeholder="Tu apellido Paterno">
+                    <input type="text" placeholder="Tu apellido Paterno" name="apPaterno">
                     <label for="">Correo</label>
-                    <input type="email" placeholder="Tu correo">
+                    <input type="email" placeholder="Tu correo" name="correo">
                     <label for="">Pais</label>
                     <select name="pais" id="">
-                        <option value="">Mexico</option>
-                        <option value="">Colombia</option>
+                        <option value="">Mexico</option>                        
                     </select>
                     <label for="">Codigo postal</label>
-                    <input type="text" placeholder="Tu codigo postal">
+                    <input type="text" placeholder="Tu codigo postal" name ="cp">
                     <label for="">Colonia</label>
-                    <input type="text" placeholder="Tu colonia">
+                    <input type="text" placeholder="Tu colonia" name="colonia">
                     <label for="">Numero</label>
-                    <input type="text" placeholder="Tu numero">
+                    <input type="text" placeholder="Tu numero" name = "numero">
                     <label for="">Contraseña</label>
-                    <input type="password" placeholder="Tu contraseña">
+                    <input type="password" placeholder="Tu contraseña" name="contrasenia">
                     <button class="boton">Registrarse</button>
 
 
