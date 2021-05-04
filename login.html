@@ -43,7 +43,7 @@
                 </div>
 
 
-                <a class="contraseña-olvidada" href="#">¿Olvidaste tu contraseña?</a>
+                <a href="registrarse.html" class="contraseña-olvidada" href="#">¿Olvidaste tu contraseña?</a>
 
 
 
