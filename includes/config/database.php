@@ -4,6 +4,10 @@ function conectarDB():mysqli{
     if(!$db){
         echo "no se conecto";
         exit;
+    }else{
+        echo "se conecto";
     }
     return $db;
+
 }
+conectarDB();
