@@ -1,3 +1,8 @@
+<?php
+session_start();
+session_unset();
+session_destroy();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,6 +22,7 @@
     <title>Le pioje</title>
 </head>
 <body>
+   
     <header class="header">
         <div class="contenedor">
             <div class="barra">
@@ -24,7 +30,7 @@
                     <img class="logo_imagen" src="/Imagenes/Logo.png" alt="">
                 </a>
                 <nav class="navegacion">
-                    <a href="login.html" class="navegacion__enlace">Iniciar sesión</a>
+                    <a href="login.php" class="navegacion__enlace">Iniciar sesión</a>
                     <a href="#" class="navegacion__enlace">Registrase</a>
                     <a href="#" class="navegacion__enlace">Sobre nosotros</a>
                 </nav>

@@ -1,3 +1,38 @@
+<?php
+require 'includes/app.php';
+
+$db = conectarDB();
+$errores = [];
+$correo = '';
+$contrasenia = '';
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    
+    $correo = mysqli_real_escape_string($db, filter_var($_POST['correo'], FILTER_VALIDATE_EMAIL));
+    $contrasenia = mysqli_real_escape_string($db, $_POST['contrasenia']);
+    $query = "SELECT * FROM USUARIOS WHERE CORREO = '{$correo}'";
+    $resultado=mysqli_query($db, $query);
+    if ($resultado){
+        if(mysqli_num_rows($resultado)>0){
+            while($fila=mysqli_fetch_array($resultado)){
+                if( password_verify( $contrasenia, $fila["CONTRASENIA"]) and $fila["CORREO"==$correo]){
+                    echo "todo correcto";
+                    session_start();
+                    $_SESSION['NOMBRE']=$fila["NOMBRE"];
+                    $_SESSION['ID_USUARIO']=$fila["ID_USUARIO"];
+                    header('Location: /menuDeUsuario.php');
+                    die();
+                    
+
+
+                    
+                }
+            }
+        }
+    }
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,13 +65,13 @@
 
             <h3 class="centrar">Iniciar Sesión</h3>
 
-            <form action="" class="formulario">
+            <form action="" class="formulario" method="POST">
 
                 <label for="email">E-mail</label>
-                <input type="email" placeholder="Ingresa tu email" id="email">
+                <input type="email" placeholder="Ingresa tu email" id="email" name="correo">
 
                 <label for="contraseña">Contraseña</label>
-                <input type="password" placeholder="Tu contraseña" id="contraseña">
+                <input type="password" placeholder="Tu contraseña" id="contraseña" name="contrasenia">
 
                 <div class="separador">
                     <input class="boton" type="submit" value="Iniciar Sesión">

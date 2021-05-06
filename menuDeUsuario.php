@@ -1,3 +1,14 @@
+<?php
+    session_start();
+    $nom=$_SESSION['NOMBRE'];
+    $id=$_SESSION['ID_USUARIO'];
+    if ($nom==null && $id==null){
+        header('Location: /index.php');
+
+    }
+    echo $nom."<br>";
+    echo "<a href='index.php'>cerrar sesion</a>";
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,60 +52,7 @@
     </header>
     <div  id="contenido"></div>
 
-    <script type="text/javascript">
-        $('#perfil').click(function(){
-            var esperar=2000;
-            $.ajax({
-                url:'personal.html',
-                success: function(data){
-                    setTimeout(function(){
-                        $('#contenido').html(data)
-                    }
-                    ); 
-    
-                }
-            });
-        });
-        $('#producto').click(function(){
-            var esperar=2000;
-            $.ajax({
-                url:'producto.html',
-                success: function(data){
-                    setTimeout(function(){
-                        $('#contenido').html(data)
-                    }
-                    ); 
-    
-                }
-            });
-        });
-        $('#ventas').click(function(){
-            var esperar=2000;
-            $.ajax({
-                url:'ventas.html',
-                success: function(data){
-                    setTimeout(function(){
-                        $('#contenido').html(data)
-                    }
-                    ); 
-    
-                }
-            });
-        });
-        $('#historial').click(function(){
-            var esperar=2000;
-            $.ajax({
-                url:'historial.html',
-                success: function(data){
-                    setTimeout(function(){
-                        $('#contenido').html(data)
-                    }
-                    ); 
-    
-                }
-            });
-        });
-        </script>
+    <script src="JS/scripts.js"></script>
 </body>
 
 </html>

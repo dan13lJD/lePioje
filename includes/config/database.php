@@ -5,7 +5,7 @@ function conectarDB():mysqli{
         #echo "no se conecto";
         exit;
     }else{
-        echo "se conecto";
+        //echo "se conecto";
     }
     return $db;
 

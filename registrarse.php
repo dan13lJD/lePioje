@@ -19,6 +19,7 @@ $cp = '';
 $referencias = '';
 $ciudad = '';
 
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     #filtrado de los datos
@@ -40,7 +41,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $query = "SELECT CORREO FROM USUARIOS WHERE CORREO = '{$correo}'";
     #consultamos en la BD si ya existe el correo e
     $resultado = mysqli_num_rows(mysqli_query($db, $query));
-
     if($resultado>1){
         $errores[] = "Ya hay una cuenta asociada con el correo electronico que intentas usar";
     }
@@ -102,8 +102,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         #primero hasheamos la contraseña
         $passwordHash = password_hash($contrasenia, PASSWORD_DEFAULT);               
         #prepararamos la consulta
-        $query = "INSERT INTO usuarios(NOMBRE, APELLIDO_P, APELLIDO_M, CORREO, TELEFONO, CONTRASENIA, PAIS, ESTADO, CIUDAD, COLONIA, CALLE, NUMERO, REFERENCIAS) 
-                  VALUES ('{$nombre}', '{$apPaterno}', '{$apMaterno}', '{$correo}', '{$telefono}', '{$passwordHash}', '{$pais}', '{$estado}', '{$ciudad}', '{$colonia}', {$calle}, {$numero}, {$referencias})";
+        $query = "INSERT INTO usuarios(NOMBRE, APELLIDO_P, APELLIDO_M, CORREO, TELEFONO, CONTRASENIA, PAIS, ESTADO, CIUDAD, COLONIA, CALLE, REFERENCIAS, CP, NUMERO) 
+                  VALUES ('{$nombre}', '{$apPaterno}', '{$apMaterno}', '{$correo}', '{$telefono}', '{$passwordHash}', '{$pais}', '{$estado}', '{$ciudad}', '{$colonia}', '{$calle}', '{$referencias}', '{$cp}','{$numero}');";
         #procedemos a insertar en la BD
         $resultado = mysqli_query($db, $query);
         
@@ -111,7 +111,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
            header('Location: /login.php');
         }
-        
+        echo "hubo un error";
+
     } 
 }
 ?>
