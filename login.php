@@ -20,7 +20,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $_SESSION['NOMBRE']=$fila["NOMBRE"];
                     $_SESSION['ID_USUARIO']=$fila["ID_USUARIO"];
                     header('Location: /menuDeUsuario.php');
-                    die();                    
+                    die();
+                    
+
+
+                    
                 }
             }
         }
@@ -75,6 +79,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
                 <a href="registrarse.html" class="contraseña-olvidada" href="#">¿Olvidaste tu contraseña?</a>
+
+
 
             </form>
         </div>
