@@ -754,3 +754,19 @@ select {
 .exito {
     background-color: #71B100;
 }
+
+
+/*Secciones del formulario*/
+
+.resaltar-seccion {
+    background-color: #fff;
+}
+
+.seccion {
+    display: none;
+    padding-top: 5rem / 2;
+}
+
+.mostrar-seccion {
+    display: block!important;
+}
