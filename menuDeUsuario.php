@@ -51,6 +51,12 @@
         </div>
     </header>
     <div  id="contenido"></div>
+    <footer class="footer">
+        <div class="footer-texto">
+            <p>La mejor ropa de segunda mano en el mercado</p>
+        </div>
+
+    </footer>
 
     <script src="JS/scripts.js"></script>
 </body>
