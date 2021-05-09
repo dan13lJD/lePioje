@@ -49,8 +49,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $idProducto['ID_PRODUCTO'];
 
     #subida de archivos al servidor
+    $carpeta_raiz = "usr";
     $carpeta_usuario = $idUsuario;
     $carpetaProducto = $id;
+
     $nombre_imagen = '';
 
     foreach($_FILES["imagenes-producto"]['tmp_name'] as $key => $tmp_name){
@@ -59,18 +61,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             #leemos la fuente de las imágenes            
             $fuente = $_FILES["imagenes-producto"]["tmp_name"][$key];
             #definimos el path donde se guardarán las imágenes
-            $carpeta = "usr/$carpeta_usuario/$carpetaProducto";
+            $carpeta = "$carpeta_raiz/$carpeta_usuario/$carpetaProducto";
 
             if(!file_exists($carpeta)){
-                mkdir($carpeta);
+                mkdir($carpeta, 0777, true);
             }
-            if(!file_exists($carpeta_usuario)){
-                mkdir($carpeta_usuario);
-            }
-            if(!file_exists($carpeta)){
-                mkdir($carpetaProducto);
-            }
-            
             #generamos un nombre unico para las imagenes 
             $nombre_imagen = md5(uniqid(rand(), true)) . ".jpg";
 
