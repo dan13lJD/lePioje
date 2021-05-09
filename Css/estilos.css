@@ -770,3 +770,15 @@ select {
 .mostrar-seccion {
     display: block!important;
 }
+.personal-headerprincipal{
+    margin-top: 2rem;
+    background-image: url(/Imagenes/perfil-img.jpg);
+    height: 25rem;
+    /*Esto es para mostrar la imagen completa*/
+    background-size: cover;
+    /*Para que ocupe todo el espacio*/
+    background-repeat: no-repeat;
+    background-position: center center;
+    /*Esto es para cuando hagamos pequeña la ventana se centre la img*/
+    background-color: rgba(73, 7, 7, 0.6);
+}
