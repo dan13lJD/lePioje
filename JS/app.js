@@ -15,13 +15,77 @@ $(document).ready(function() {
     validarFormulario();
 });
 
-function validarFormulario() {
-    $("#formulario-producto").validate();
-    alert("hola");
+function formulario() {
     $("#subir-producto").click(function(event) {
-
         event.preventDefault();
+        validarFormulario();
     });
+
+}
+
+function validarFormulario() {
+    $("#formulario-producto").validate({
+            rules: {
+                nproducto: {
+                    required: true,
+                    maxlength: 20
+                },
+
+                mproducto: {
+                    required: true,
+                    maxlength: 20
+                },
+                cproducto: {
+                    required: true,
+                    maxlength: 15
+                },
+                tproducto: {
+                    required: true,
+                    maxlength: 4
+                },
+                pproducto: {
+                    required: true
+                },
+
+                materialProducto: {
+                    required: true
+                },
+                descripcionProducto: {
+                    required: true,
+                    maxlength: 50
+                }
+            },
+            messages: {
+                nproducto: {
+                    required: "Debes ingresar un nombre del producto",
+                    maxlength: "Maximo 20 caracteres!"
+                },
+
+                mproducto: {
+                    required: "Debes ingresar una marca del producto",
+                    maxlength: "Maximo 20 caracteres!"
+                },
+                cproducto: {
+                    required: "Debes ingresar un color del producto",
+                    maxlength: "Maximo 15 caracteres!"
+                },
+                pproducto: {
+                    required: "Debes ingresar un precio del producto",
+                },
+
+                materialProducto: {
+                    required: "Debes ingresar el material del producto",
+                },
+                descripcionProducto: {
+                    required: "Debes ingresar una descripción del producto",
+                    maxlength: "Maximo 50 caracteres"
+                }
+            }
+
+
+        }
+
+    );
 }
 
 function mostrarSeccion() {

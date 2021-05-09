@@ -1,10 +1,96 @@
 <?php
+require 'includes/app.php';
 session_start();
 $nom = $_SESSION['NOMBRE'];
-$id = $_SESSION['ID_USUARIO'];
+$idUsuario = $_SESSION['ID_USUARIO'];
+
+
 if ($nom == null && $id == null) {
     header('Location: /index.php');
 }
+
+
+$db = conectarDB(); //creamos la conexión con la base de datos 
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    #filtrado de datos
+    $nProducto = mysqli_real_escape_string($db, $_POST['nproducto']);//nombre
+    $mProducto = mysqli_real_escape_string($db, $_POST['mproducto']);//marca
+    $cProducto = mysqli_real_escape_string($db, $_POST['cproducto']);//color
+    $tProducto = mysqli_real_escape_string($db, $_POST['tproducto']);//talla
+    $tipoProducto = mysqli_real_escape_string($db, $_POST['tipoProducto']);//tipo (donacion o venta)
+    $pProducto = mysqli_real_escape_string($db, $_POST['pproducto']);//precio
+    $personaProducto = mysqli_real_escape_string($db, $_POST['personaProducto']);//quien va a usar la prenda
+    $matProducto = mysqli_real_escape_string($db, $_POST['materialProducto']);//material
+    $descProducto = mysqli_real_escape_string($db, $_POST['descripcionProducto']);
+    $catProducto = mysqli_real_escape_string($db, $_POST['catProducto']);//categoria del producto (zapatos, vestidos, etc)
+    #preparamos la consulta
+    $query = "INSERT INTO producto (NOMBRE, MARCA, COLOR, TALLA, PRECIO, DESCRIPCION, TIPO_PERSONA, CATEGORIA, MATERIAL, TIPO)
+              VALUES ('{$nProducto}',
+                      '{$mProducto}',
+                      '{$cProducto}',
+                      '{$tProducto}',
+                      '{$pProducto}',
+                      '{$descProducto}',
+                      '{$personaProducto}',
+                      '{$catProducto}',
+                      '{$matProducto}',
+                      '{$tipoProducto}'
+                      )";
+    #insertamos en la base de datos los datos correspondientes
+    $resultado = mysqli_query($db, $query);
+
+    #leemos el dato del ID en la base de datos 
+    $query = "SELECT ID_PRODUCTO FROM producto WHERE NOMBRE = '{$nProducto}'";
+    var_dump($query);
+    $resultado = mysqli_query($db, $query);
+    $idProducto = mysqli_fetch_assoc($resultado);
+    $id = $idProducto['ID_PRODUCTO'];
+
+    #subida de archivos al servidor
+    $carpeta_usuario = $idUsuario;
+    $carpetaProducto = $id;
+    $nombre_imagen = '';
+
+    foreach($_FILES["imagenes-producto"]['tmp_name'] as $key => $tmp_name){
+        
+        if($_FILES["imagenes-producto"]["name"][$key]){
+            #leemos la fuente de las imágenes            
+            $fuente = $_FILES["imagenes-producto"]["tmp_name"][$key];
+            #definimos el path donde se guardarán las imágenes
+            $carpeta = "usr/$carpeta_usuario/$carpetaProducto";
+
+            if(!file_exists($carpeta)){
+                mkdir($carpeta);
+            }
+            if(!file_exists($carpeta_usuario)){
+                mkdir($carpeta_usuario);
+            }
+            if(!file_exists($carpeta)){
+                mkdir($carpetaProducto);
+            }
+            
+            #generamos un nombre unico para las imagenes 
+            $nombre_imagen = md5(uniqid(rand(), true)) . ".jpg";
+
+            $dir = opendir($carpeta);
+            $target_path = $carpeta . '/' .$nombre_imagen;
+            
+            $query = "INSERT INTO imagenes_producto(ID_PRODUCTO, ID_USUARIO, NOMBRE_IMAGEN) VALUES ($id, $idUsuario, '{$nombre_imagen}')";
+            if(move_uploaded_file($fuente, $target_path . $nombre_imagen)){
+                #ya solo se debe cargar la referencia del nombre en la base de datos
+                $resultado = mysqli_query($db, $query);
+                if($resultado){
+                    echo "correcto ";
+                }
+            }else{
+                "error";
+            }
+            
+        }
+    }
+}               
 echo $nom . "<br>";
 echo "<a href='index.php'>cerrar sesion</a>";
 ?>
@@ -52,7 +138,7 @@ echo "<a href='index.php'>cerrar sesion</a>";
         </div>
     </header>
     <div id="contenido" class="seccion"></div>
-    <!-- inicia el contenido del formulario para los productos-->
+    <!-- inicia el contenido del formulario para los productos ¡NO BORRAR, NO INTERFIERE CON TUS SECCIONES! 😒-->
     <main id="seccion-producto" class="seccion">
         <h1 class="centrar-texto">Producto</h1>
 
@@ -63,22 +149,24 @@ echo "<a href='index.php'>cerrar sesion</a>";
             </nav>
         </div>
 
-        <!--Inicia el contenido del formulario para publicar un producto -->
+        <!--Inicia el contenido del formulario para publicar un producto ¡NO BORRAR, NO INTERFIERE CON TUS SECCIONES! 😒-->
         <div id="seccion-1" class="seccion">
             <h2 class="centrar-texto">Publicar un producto:</h2>
-            <form class="registro-dividirFormulario" method="POST" action="" id="formulario-producto">
+
+            <form class="registro-dividirFormulario" method="POST" action="menuDeUsuario.php" id="formulario-producto" enctype="multipart/form-data">
                 <div class="registro-formulario">
-                    <label for="n-producto">Nombre del producto:</label>
-                    <input type="text" placeholder="Escribe el nombre del producto" id="n-producto" name="n-producto" class="required">
 
-                    <label for="m-producto">Marca del producto:</label>
-                    <input type="text" placeholder="Escribe la marca del producto" id="m-producto" name="m-producto" class="required">
+                    <label for="nproducto">Nombre del producto:</label>
+                    <input type="text" placeholder="Escribe el nombre del producto" id="nproducto" name="nproducto" class="required">
 
-                    <label for="c-producto">Color del producto:</label>
-                    <input type="text" placeholder="Escribe el color del producto" id="c-producto" name="c-producto" class="required">
+                    <label for="mproducto">Marca del producto:</label>
+                    <input type="text" placeholder="Escribe la marca del producto" id="mproducto" name="mproducto" class="required">
 
-                    <label for="t-producto">Talla del producto:</label>
-                    <select name="t-producto" id="t-producto">
+                    <label for="cproducto">Color del producto:</label>
+                    <input type="text" placeholder="Escribe el color del producto" id="cproducto" name="cproducto" class="required">
+
+                    <label for="tproducto">Talla del producto:</label>
+                    <select name="tproducto" id="tproducto">
                         <option value="CH">CH</option>
                         <option value="M">M</option>
                         <option value="G">G</option>
@@ -86,42 +174,42 @@ echo "<a href='index.php'>cerrar sesion</a>";
                         <option value="CH">EEG</option>
                     </select>
 
-                    <label for="tipo-producto">Este producto es para:</label>
-                    <select name="tipo-producto" id="tipo-producto">
+                    <label for="tipoProducto">Este producto es para:</label>
+                    <select name="tipoProducto" id="tipoProducto">
                         <option value="0">Donación</option>
                         <option value="1">Venta</option>
                     </select>
 
-                    <label for="p-producto">Precio del producto:</label>
-                    <input type="number" placeholder="Escribe el precio del producto (0 en caso de ser una donación)" id="p-producto" name="p-producto" min="0" max="100000" class="required">
+                    <label for="pproducto">Precio del producto:</label>
+                    <input type="number" placeholder="Escribe el precio del producto (0 en caso de ser una donación)" id="pproducto" name="pproducto" min="0" max="1000" class="required">
                 </div>
                 <div class="registro-formulario">
-                    <label for="persona-producto">Esta prenda es para:</label>
-                    <select name="persona-producto" id="persona-producto">
+                    <label for="personaProducto">Esta prenda es para:</label>
+                    <select name="personaProducto" id="personaProducto">
                         <option value="Mujer">Mujer</option>
                         <option value="Hombre">Hombre</option>
                         <option value="Niño rata">Niña</option>
                         <option value="Niña">Niño</option>
                     </select>
 
-                    <label for="cat-producto">Selecciona la categoria del producto</label>
-                    <select name="cat-producto" id="cat-producto">
-                        <option value="">Zapatillas</option>
+                    <label for="catProducto">Selecciona la categoria del producto</label>
+                    <select name="catProducto" id="catProducto">
+                        <option value="Zapatillas">Zapatillas</option>
                     </select>
 
-                    <label for="material-producto">Ingresa el material del producto:</label>
-                    <input type="text" name="material-producto" id="material-producto" class="required">
+                    <label for="materialProducto">Ingresa el material del producto:</label>
+                    <input type="text" name="materialProducto" id="materialProducto" class="required">
 
-                    <label for="descripcion-producto">Ingresa una descripción del producto:</label>
-                    <input type="textarea" name="descripcion-producto" id="descripcion-producto" class="required">
+                    <label for="descripcionProducto">Ingresa una descripción del producto:</label>
+                    <input type="textarea" name="descripcionProducto" id="descripcionProducto" class="required">
 
                     <label for="imagenes-producto">Sube algunas imágenes referentes al producto:</label>
-                    <input type="file" name="imagenes-producto[]" id="imagenes-producto" accept="image/*" multiple class="required">
+                    <input type="file" name="imagenes-producto[]" id="imagenes-producto[]" accept="image/*" multiple="" class="required">
 
                     <button class="boton" id="subir-producto">Subir producto</button>
                 </div>
             </form>
-            
+
         </div>
 
         <div id="seccion-2" class="seccion">
@@ -131,8 +219,8 @@ echo "<a href='index.php'>cerrar sesion</a>";
 
     <script src="JS/scripts.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="http://jzaefferer.github.com/jquery-validation/jquery.validate.js"></script>
-    <script src="JS/app.js"></script>    
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+    <script src="JS/app.js"></script>
 </body>
 
 </html>

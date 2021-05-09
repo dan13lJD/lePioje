@@ -39,12 +39,6 @@
         </div>
     </header>
 
-
-
-
-
-
-
     <main>
         <form action="includes/perfilMod.php" method="POST" class="registro-dividirFormulario">
         <?php
