@@ -21,10 +21,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $_SESSION['ID_USUARIO']=$fila["ID_USUARIO"];
                     header('Location: /menuDeUsuario.php');
                     die();
-                    
-
-
-                    
                 }
             }
         }

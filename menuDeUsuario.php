@@ -4,27 +4,37 @@ session_start();
 $nom = $_SESSION['NOMBRE'];
 $idUsuario = $_SESSION['ID_USUARIO'];
 
-
 if ($nom == null && $id == null) {
+    //no funciona?
     header('Location: /index.php');
 }
-
-
 $db = conectarDB(); //creamos la conexión con la base de datos 
+#preparamos la consulta para revisar los articulos del usuario
+$query = "SELECT PRODUCTO.ID_PRODUCTO, 
+                 IMAGENES_PRODUCTO.ID_USUARIO, 
+                 PRODUCTO.NOMBRE, 
+                 PRODUCTO.DESCRIPCION,
+                 IMAGENES_PRODUCTO.NOMBRE_IMAGEN 
+          FROM PRODUCTO 
+          INNER JOIN IMAGENES_PRODUCTO 
+          ON PRODUCTO.ID_PRODUCTO = IMAGENES_PRODUCTO.ID_PRODUCTO 
+          WHERE IMAGENES_PRODUCTO.ID_USUARIO IN({$idUsuario});";
+
+$resultadoConsulta = mysqli_query($db, $query);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     #filtrado de datos
-    $nProducto = mysqli_real_escape_string($db, $_POST['nproducto']);//nombre
-    $mProducto = mysqli_real_escape_string($db, $_POST['mproducto']);//marca
-    $cProducto = mysqli_real_escape_string($db, $_POST['cproducto']);//color
-    $tProducto = mysqli_real_escape_string($db, $_POST['tproducto']);//talla
-    $tipoProducto = mysqli_real_escape_string($db, $_POST['tipoProducto']);//tipo (donacion o venta)
-    $pProducto = mysqli_real_escape_string($db, $_POST['pproducto']);//precio
-    $personaProducto = mysqli_real_escape_string($db, $_POST['personaProducto']);//quien va a usar la prenda
-    $matProducto = mysqli_real_escape_string($db, $_POST['materialProducto']);//material
+    $nProducto = mysqli_real_escape_string($db, $_POST['nproducto']); //nombre
+    $mProducto = mysqli_real_escape_string($db, $_POST['mproducto']); //marca
+    $cProducto = mysqli_real_escape_string($db, $_POST['cproducto']); //color
+    $tProducto = mysqli_real_escape_string($db, $_POST['tproducto']); //talla
+    $tipoProducto = mysqli_real_escape_string($db, $_POST['tipoProducto']); //tipo (donacion o venta)
+    $pProducto = mysqli_real_escape_string($db, $_POST['pproducto']); //precio
+    $personaProducto = mysqli_real_escape_string($db, $_POST['personaProducto']); //quien va a usar la prenda
+    $matProducto = mysqli_real_escape_string($db, $_POST['materialProducto']); //material
     $descProducto = mysqli_real_escape_string($db, $_POST['descripcionProducto']);
-    $catProducto = mysqli_real_escape_string($db, $_POST['catProducto']);//categoria del producto (zapatos, vestidos, etc)
+    $catProducto = mysqli_real_escape_string($db, $_POST['catProducto']); //categoria del producto (zapatos, vestidos, etc)
     #preparamos la consulta
     $query = "INSERT INTO producto (NOMBRE, MARCA, COLOR, TALLA, PRECIO, DESCRIPCION, TIPO_PERSONA, CATEGORIA, MATERIAL, TIPO)
               VALUES ('{$nProducto}',
@@ -55,37 +65,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $nombre_imagen = '';
 
-    foreach($_FILES["imagenes-producto"]['tmp_name'] as $key => $tmp_name){
-        
-        if($_FILES["imagenes-producto"]["name"][$key]){
+    foreach ($_FILES["imagenes-producto"]['tmp_name'] as $key => $tmp_name) {
+
+        if ($_FILES["imagenes-producto"]["name"][$key]) {
             #leemos la fuente de las imágenes            
             $fuente = $_FILES["imagenes-producto"]["tmp_name"][$key];
             #definimos el path donde se guardarán las imágenes
             $carpeta = "$carpeta_raiz/$carpeta_usuario/$carpetaProducto";
 
-            if(!file_exists($carpeta)){
+            if (!file_exists($carpeta)) {
                 mkdir($carpeta, 0777, true);
             }
             #generamos un nombre unico para las imagenes 
             $nombre_imagen = md5(uniqid(rand(), true)) . ".jpg";
 
             $dir = opendir($carpeta);
-            $target_path = $carpeta . '/' .$nombre_imagen;
-            
+            $target_path = $carpeta . '/' . $nombre_imagen;
             $query = "INSERT INTO imagenes_producto(ID_PRODUCTO, ID_USUARIO, NOMBRE_IMAGEN) VALUES ($id, $idUsuario, '{$nombre_imagen}')";
-            if(move_uploaded_file($fuente, $target_path . $nombre_imagen)){
+            if (move_uploaded_file($fuente, $target_path . $nombre_imagen)) {
                 #ya solo se debe cargar la referencia del nombre en la base de datos
                 $resultado = mysqli_query($db, $query);
-                if($resultado){
+                if ($resultado) {
                     echo "correcto ";
                 }
-            }else{
+            } else {
                 "error";
             }
-            
         }
     }
-}               
+}
 echo $nom . "<br>";
 echo "<a href='index.php'>cerrar sesion</a>";
 ?>
@@ -134,6 +142,7 @@ echo "<a href='index.php'>cerrar sesion</a>";
     </header>
     <div id="contenido" class="seccion"></div>
     <!-- inicia el contenido del formulario para los productos ¡NO BORRAR, NO INTERFIERE CON TUS SECCIONES! 😒-->
+    <img src="usr/32/64/0d11f0e13ba654ab2681794fdf337621.jpg0d11f0e13ba654ab2681794fdf337621.jpg" alt="">
     <main id="seccion-producto" class="seccion">
         <h1 class="centrar-texto">Producto</h1>
 
@@ -200,15 +209,42 @@ echo "<a href='index.php'>cerrar sesion</a>";
 
                     <label for="imagenes-producto">Sube algunas imágenes referentes al producto:</label>
                     <input type="file" name="imagenes-producto[]" id="imagenes-producto[]" accept="image/*" multiple="" class="required">
-
+                    
                     <button class="boton" id="subir-producto">Subir producto</button>
+                    
                 </div>
             </form>
 
         </div>
 
         <div id="seccion-2" class="seccion">
+
             <h2 class="centrar-texto">Mis productos:</h2>
+            <?php $auxP = null; ?>
+            <?php if (mysqli_num_rows($resultadoConsulta)>0) : ?>
+                <?php while ($productos = mysqli_fetch_assoc($resultadoConsulta)) : ?>
+                    <?php if ($auxP != $productos['ID_PRODUCTO']) : ?>
+                        <div class="tarjeta-producto">
+                            <img class="centrador" src="/usr/<?php echo $idUsuario ?>/<?php echo $productos['ID_PRODUCTO'] ?>/<?php echo $productos['NOMBRE_IMAGEN'] . $productos['NOMBRE_IMAGEN'] ?>" alt="img">
+
+                            <p><span>ID:</span> <?php echo $productos['ID_PRODUCTO']; ?></p>
+                            <p><span>Nombre producto:</span><?php echo $productos['NOMBRE']; ?></p>
+                            <p><span>Descripción del Producto:</span> <?php echo $productos['DESCRIPCION']; ?></p>
+
+                            <div class="alinear-botones-izquierda">
+                                <a href="editar.php?id=<?php echo $productos['ID_PRODUCTO'] ?>" class="boton">Editar</a>
+                                <a href="eliminar.php?id=<?php echo $productos['ID_PRODUCTO'] ?>" class="boton boton--eliminar">Eliminar</a>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                    <?php $auxP = $productos['ID_PRODUCTO']; ?>
+                <?php endwhile; ?>
+            <?php else: ?>
+                <div class="tarjeta-producto">
+                    <img src="iconos/caja-blanca-vacia.svg" alt="vacio">
+                    <p class="centrar-texto"><span>Aún no tienes productos</span></p>
+                </div>    
+            <?php endif; ?>                
         </div>
     </main>
 

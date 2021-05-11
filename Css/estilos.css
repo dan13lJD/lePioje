@@ -224,6 +224,10 @@ img {
     background-color: var(--primario);
 }
 
+.boton--eliminar {
+    background-color: rgb(224, 43, 43);
+}
+
 .cursos {
     list-style: none;
     /*Para quitar villetas de la lista*/
@@ -770,7 +774,8 @@ select {
 .mostrar-seccion {
     display: block!important;
 }
-.personal-headerprincipal{
+
+.personal-headerprincipal {
     margin-top: 2rem;
     background-image: url(/Imagenes/perfil-img.jpg);
     height: 25rem;
@@ -781,4 +786,27 @@ select {
     background-position: center center;
     /*Esto es para cuando hagamos pequeña la ventana se centre la img*/
     background-color: rgba(73, 7, 7, 0.6);
+}
+
+
+/* estilos para la seccion de mostrar productoss */
+
+.tarjeta-producto {
+    background-color: #fcfcf7;
+    font-family: var(--fuentePirncipal);
+    margin: 5rem 5rem;
+    padding: 2rem 2rem 2rem 2rem;
+    border-radius: 2rem;
+}
+
+.tarjeta-producto img {
+    width: 400px;
+    height: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tarjeta-producto p span {
+    font-weight: 800;
 }
