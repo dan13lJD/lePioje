@@ -84,7 +84,7 @@
 
                     <label for="">Numero</label>
                     <input type="text" placeholder="Numero" name="numero" value="<?php echo $mostrar['NUMERO']?>">
-                    <button class="boton">Registrarse</button>
+                    <button class="boton">Subir cambios</button>
         </div>
         <?php
         }

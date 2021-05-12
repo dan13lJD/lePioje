@@ -31,8 +31,8 @@ session_destroy();
                 </a>
                 <nav class="navegacion">
                     <a href="login.php" class="navegacion__enlace">Iniciar sesión</a>
-                    <a href="#" class="navegacion__enlace">Registrase</a>
-                    <a href="#" class="navegacion__enlace">Sobre nosotros</a>
+                    <a href="registrarse.php" class="navegacion__enlace">Registrase</a>
+                    <a href="nosotros.php" class="navegacion__enlace">Sobre nosotros</a>
                 </nav>
             </div>
 
