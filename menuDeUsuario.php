@@ -142,7 +142,6 @@ echo "<a href='index.php'>cerrar sesion</a>";
     </header>
     <div id="contenido" class="seccion"></div>
     <!-- inicia el contenido del formulario para los productos ¡NO BORRAR, NO INTERFIERE CON TUS SECCIONES! 😒-->
-    <img src="usr/32/64/0d11f0e13ba654ab2681794fdf337621.jpg0d11f0e13ba654ab2681794fdf337621.jpg" alt="">
     <main id="seccion-producto" class="seccion">
         <h1 class="centrar-texto">Producto</h1>
 

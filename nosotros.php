@@ -18,7 +18,7 @@
     <header class="nosotros-headerprincipal">
         <div class="contenedor">
             <div class="barra">
-                <a class="logo" href="index.html">
+                <a class="logo" href="index.php">
                     <img class="logo_imagen" src="/Imagenes/Logo.png" alt="">
                 </a>   
             </div>
