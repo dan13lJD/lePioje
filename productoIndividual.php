@@ -1,3 +1,8 @@
+<?php 
+
+$ID=$_GET['ID'];
+echo $ID;
+?>
 <!DOCTYPE html>
     <html lang="en">
     <head>

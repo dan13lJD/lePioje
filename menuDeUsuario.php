@@ -198,7 +198,16 @@ echo "<a href='index.php'>cerrar sesion</a>";
 
                     <label for="catProducto">Selecciona la categoria del producto</label>
                     <select name="catProducto" id="catProducto">
-                        <option value="Zapatillas">Zapatillas</option>
+                        <option value="Zapatillas">Zapatos</option>
+                        <option value="Camisas">Camisas</option>
+                        <option value="Pantalones">Pantalones</option>
+                        <option value="Chamarras">Chamarras</option>
+                        <option value="Tenis">Tenis</option>
+                        <option value="sudaderas">Sudaderas</option>
+                        <option value="sueteres">Suéteres</option>
+                        <option value="accesorios">Accesorios</option>
+                        <option value="pants">Pants</option>
+                        <option value="shorts">Shorts</option>
                     </select>
 
                     <label for="materialProducto">Ingresa el material del producto:</label>

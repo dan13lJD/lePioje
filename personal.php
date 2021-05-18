@@ -27,14 +27,11 @@
     <header class="personal-headerprincipal">
     <div class="contenedor">
             <div class="barra">
-                <a class="logo" href="index.html">
-                    <img class="logo_imagen" src="/Imagenes/Logo.png" alt="">
-                </a>
             </div>
 
         </div>
         <div class="header__texto">
-            <h2 class="no-margin header__texto__h2">La mejor de ropa de segunda mano</h2>
+            <h2 class="no-margin header__texto__h2">INFORMACION PERSONAL</h2>
 
         </div>
     </header>
