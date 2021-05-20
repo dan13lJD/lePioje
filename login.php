@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     session_start();
                     $_SESSION['NOMBRE']=$fila["NOMBRE"];
                     $_SESSION['ID_USUARIO']=$fila["ID_USUARIO"];
-                    header('Location: /menuDeUsuario.php');
+                    header('Location: /paginaprincipal.php');
                     die();
                 }
             }
