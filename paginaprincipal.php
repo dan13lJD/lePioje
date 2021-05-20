@@ -1,8 +1,14 @@
-<?php
+<?php 
 
 session_start();
-session_unset();
-session_destroy();
+$nom = $_SESSION['NOMBRE'];
+$idUsuario = $_SESSION['ID_USUARIO'];
+echo "hola".$nom;
+
+if ($nom == null && $id == null) {
+    //no funciona?
+    header('Location: /index.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,8 +36,8 @@ session_destroy();
                     <img class="logo_imagen" src="/Imagenes/Logo.png" alt="">
                 </a>
                 <nav class="navegacion" id="navegacion"">
-                    <a href="login.php" class="navegacion__enlace" id="iniciarsesion">Iniciar sesión</a>
-                    <a href="registrarse.php" class="navegacion__enlace" id="registrarse" >Registrase</a>
+                    <a href="menuDeUsuario.php" class="navegacion__enlace" id="iniciarsesion">Menu</a>
+                    <a href="index.php" class="navegacion__enlace" id="registrarse" >Cerrar sesion</a>
                     <a href="nosotros.php" class="navegacion__enlace" id="sobrenosotros"> Sobre nosotros</a>
                     
                 </nav>
@@ -77,45 +83,3 @@ session_destroy();
     </footer>
 </body>
 </html>
-<!-- <script type="text/javascript">
-<?php 
-    if($bandera==1){
-        ?>
-            window.onload=function eliminar(){
-         load();
-         test();
-         agregar();
-    }
-        var b;
-        function load(){
-            b=document.getElementById("navegacion");
-        }
-        function test(){
-            var hijo=document.getElementById("iniciarsesion"); 
-            b.removeChild(hijo);
-            var hijo2=document.getElementById("registrarse"); 
-            b.removeChild(hijo2);
-            var hijo3=document.getElementById("sobrenosotros"); 
-            b.removeChild(hijo3);
-        }
-        function agregar(){
-            console.log("ENTRO");
-           var idelemento=document.getElementById("navegacion");
-           var enlace=document.createElement("a");
-           var enlace2=document.createElement("a");
-           enlace2.textContent="SALIR";
-           enlace.textContent="MENU";
-           enlace.classList.add("navegacion__enlace");
-           enlace2.classList.add("navegacion__enlace");
-           enlace.href="menuDeUsuario.php";
-           enlace2.href="includes/sesion.php";
-           idelemento.appendChild(enlace);
-           idelemento.appendChild(enlace2);
-            
-        }
-<?php
-    }
-?> -->
-
-
-</script>
