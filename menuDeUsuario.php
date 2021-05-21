@@ -94,8 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
-echo $nom . "<br>";
-echo "<a href='index.php'>cerrar sesion</a>";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -117,6 +116,7 @@ echo "<a href='index.php'>cerrar sesion</a>";
 </head>
 
 <body>
+    <h1 class="bienvenido bienvenido-texto">Menu de <?php echo $nom?></h1>
     <header class="menu-headerprincipal">
         <div class="contenedor">
             <div class="barra">
@@ -191,8 +191,8 @@ echo "<a href='index.php'>cerrar sesion</a>";
                     <select name="personaProducto" id="personaProducto">
                         <option value="Mujer">Mujer</option>
                         <option value="Hombre">Hombre</option>
-                        <option value="Niño rata">Niña</option>
-                        <option value="Niña">Niño</option>
+                        <option value="Nino">Niño</option>
+                        <option value="Nina">Niña</option>
                     </select>
 
                     <label for="catProducto">Selecciona la categoria del producto</label>
@@ -207,6 +207,8 @@ echo "<a href='index.php'>cerrar sesion</a>";
                         <option value="accesorios">Accesorios</option>
                         <option value="pants">Pants</option>
                         <option value="shorts">Shorts</option>
+                        <option value="falda">Falda</option>
+                        <option value="vestido">Vestido</option>
                     </select>
 
                     <label for="materialProducto">Ingresa el material del producto:</label>

@@ -49,6 +49,19 @@ $('#historial').click(function(){
         }
     });
 });
+$('#recuperarcontrasenia').click(function(){
+    var esperar=2000;
+    $.ajax({
+        url:'recuperarcontrasenia.php',
+        success: function(data){
+            setTimeout(function(){
+                $('#contenido').html(data)
+            }
+            ); 
+
+        }
+    });
+});
 
 // $('#publicar').click(function() {
 //     var esperar = 2000;

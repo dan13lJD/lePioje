@@ -357,7 +357,7 @@ img {
 @media (min-width: 768px) {
     .principal {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
         text-align: center;
         gap: 2rem;
     }
@@ -943,4 +943,27 @@ td {
     align-items: flex-end;
     justify-content: flex-end;
     padding-right: 1rem;
+}
+.mujer{
+    background-image: url(/Imagenes/ropaMujer.jpeg);
+    height: 25rem;
+    /*Esto es para mostrar la imagen completa*/
+    background-size: cover;
+    /*Para que ocupe todo el espacio*/
+    background-repeat: no-repeat;
+    background-position: center center;
+    /*Esto es para cuando hagamos pequeña la ventana se centre la img*/
+    background-color: rgba(73, 7, 7, 0.6);
+}
+.bienvenido{
+    background-color: black;
+    padding: 0.2rem;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+}
+.bienvenido-texto{
+    color: white;
+    text-align: center;
+    font-family: var(--fuenteSecundaria);
+    font-size: 2rem;
 }

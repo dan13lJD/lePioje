@@ -74,11 +74,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
 
 
-                <a href="registrarse.html" class="contraseña-olvidada" href="#">¿Olvidaste tu contraseña?</a>
-
-
-
+                
             </form>
+            <button name="recuperarcontrasenia" id="recuperarcontrasenia">Recuperar contraseña</button>
+            <div id="contenido">
+
+            </div>
         </div>
 
 
@@ -90,7 +91,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
 
     </footer>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+    <script src="JS/app.js"></script>
+    <script src="JS/scripts.js"></script>
 </body>
 
 </html>

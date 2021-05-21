@@ -107,13 +107,24 @@ $catProducto = $producto['CATEGORIA'];
                                         <select name="personaProducto" id="personaProducto">
                                                 <option value="Mujer">Mujer</option>
                                                 <option value="Hombre">Hombre</option>
-                                                <option value="Niño rata">Niña</option>
-                                                <option value="Niña">Niño</option>
+                                                <option value="Nino">Niño</option>
+                                                <option value="Nina">Niña</option>
                                         </select>
 
                                         <label for="catProducto">Selecciona la categoria del producto</label>
                                         <select name="catProducto" id="catProducto">
-                                                <option value="Zapatillas">Zapatillas</option>
+                                                <option value="Zapatillas">Zapatos</option>
+                                                <option value="Camisas">Camisas</option>
+                                                <option value="Pantalones">Pantalones</option>
+                                                <option value="Chamarras">Chamarras</option>
+                                                <option value="Tenis">Tenis</option>
+                                                <option value="sudaderas">Sudaderas</option>
+                                                <option value="sueteres">Suéteres</option>
+                                                <option value="accesorios">Accesorios</option>
+                                                <option value="pants">Pants</option>
+                                                <option value="shorts">Shorts</option>
+                                                <option value="falda">Falda</option>
+                                                <option value="vestido">Vestido</option>
                                         </select>
 
                                         <label for="materialProducto">Ingresa el material del producto:</label>

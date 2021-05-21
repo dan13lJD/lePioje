@@ -3,9 +3,9 @@ require 'includes/app.php';
 session_start();
 $nom = $_SESSION['NOMBRE'];
 $idUsuario = $_SESSION['ID_USUARIO'];
-if ($nom == null && $idUsuario == null) {
-    //no funciona?
-    header('Location: /index.php');
+ if ($nom == null && $idUsuario == null) {
+     //no funciona?
+    header('Location: /login.php');
 }
 
 $db = conectarDB();
@@ -68,7 +68,7 @@ $resultadoExistenciaCarrito = mysqli_query($db, $query);
             <div class="sidebar-social">
                 <ul>
                     <li>
-                        <a href="mostrarProducto.php">
+                        <a href="paginaprincipal.php">
                             <i><img class="invertir" src="iconos/volver-flecha.svg" alt="">Volver</i>
                         </a>
                     </li>

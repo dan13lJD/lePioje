@@ -48,23 +48,30 @@ session_destroy();
             <div>
                 <h1>MUJER</h1>
                 <img src="/Imagenes/ModeloMujer.webp" alt="">
-                <input class="boton" type="button" value="ROPA DE COMPRA">
-                <input class="boton" type="button" value="ROPA DE DONACION">
-
+                <a class="boton" type="button" value="ROPA DE COMPRA" href="mostrarProductoMujer.php?IDP=1&type=1">ROPA DE COMPRA</a>
+                <a class="boton" type="button" value="ROPA DE COMPRA" href="mostrarProductoMujer.php?IDP=0&type=1">ROPA DE DONACION</a>
+                
                 
             </div>
             <div>
                 <h1>HOMBRE</h1>
                 <img src="/Imagenes/ModeloHombre.jpg" alt="">
-                <a class="boton" type="button" value="ROPA DE COMPRA" href="mostrarProducto.php?IDP=1">ROPA DE COMPRA</a>
-                <a class="boton" type="button" value="ROPA DE COMPRA" href="mostrarProducto.php?IDP=0">ROPA DE DONACION</a>
+                <a class="boton" type="button" value="ROPA DE COMPRA" href="mostrarProducto.php?IDP=1&type=1">ROPA DE COMPRA</a>
+                <a class="boton" type="button" value="ROPA DE COMPRA" href="mostrarProducto.php?IDP=0&type=1">ROPA DE DONACION</a>
             </div>
             <div>
                 <h1>NIÑOS</h1>
                 <img class="ImagenNino" src="/Imagenes/ModeloNino.jpg" alt="">
-                <input class="boton" type="button" value="ROPA DE COMPRA">
-                <input class="boton" type="button" value="ROPA DE DONACION">
+                <a class="boton" type="button" value="ROPA DE COMPRA" href="mostrarProducto.php?IDP=1&type=0">ROPA DE COMPRA</a>
+                <a class="boton" type="button" value="ROPA DE COMPRA" href="mostrarProducto.php?IDP=0&type=0">ROPA DE DONACION</a>
             </div>
+            <div>
+                <h1>NIÑAS</h1>
+                <img class="ImagenNino" src="/Imagenes/nina.jpeg" alt="">
+                <a class="boton" type="button" value="ROPA DE COMPRA" href="mostrarProductoMujer.php?IDP=1&type=0">ROPA DE COMPRA</a>
+                <a class="boton" type="button" value="ROPA DE COMPRA" href="mostrarProductoMujer.php?IDP=0&type=0">ROPA DE DONACION</a>
+            </div>
+    
     
         </main> 
 

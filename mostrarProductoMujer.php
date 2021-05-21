@@ -7,16 +7,17 @@ $boton1 = "";
 $usr="";
 $IDP=$_GET['IDP'];
 $type=$_GET['type'];
-
 if($type==1){
-    $usr="Hombre";
+    $usr="Mujer";
 }else if($type==0){
-    $usr="Nino";
+    $usr="Nina";
 
 }
 $camisa = "";
-$zapatillas="";
 $pantalon = "";
+$vestido="";
+$falda="";
+$zapatillas="";
 $chamarra = "";
 $tenis = "";
 $sudadera = "";
@@ -217,7 +218,47 @@ if ($short) {
         }
     }
 }
-//Esto es para mostrar productos de categoria zapatillas para HOMBRES
+//Esto es para mostrar protudctos de categoria vestido para Mujer o nina
+if (isset($_POST['vestido'])) {
+    $vestido = $_POST['vestido'];
+}
+if ($vestido) {
+    $query = " SELECT DISTINCT IMG.ID_USUARIO, IMG.ID_PRODUCTO, IMG.NOMBRE_IMAGEN, P.NOMBRE, P.CATEGORIA, P.TIPO_PERSONA, P.ID_PRODUCTO,P.TIPO FROM IMAGENES_PRODUCTO IMG, PRODUCTO P WHERE  P.ID_PRODUCTO=IMG.ID_PRODUCTO AND P.TIPO_PERSONA='{$usr}' AND P.CATEGORIA='vestido' AND P.TIPO='{$IDP}' GROUP BY IMG.ID_PRODUCTO;";
+    $resultadoConsulta = mysqli_query($db, $query);
+    $i = 0;
+    if (mysqli_num_rows($resultadoConsulta) > 0) {
+        while ($fila = mysqli_fetch_assoc($resultadoConsulta)) {
+            $nombre[$i] = $fila['NOMBRE'];
+            $identificador[$i] = $fila['ID_PRODUCTO'];
+            $usuario = $fila['ID_USUARIO'];
+            $producto = $fila['ID_PRODUCTO'];
+            $imagen = $fila['NOMBRE_IMAGEN'] . $fila['NOMBRE_IMAGEN'];
+            $ruta[$i] = "/usr/$usuario/$producto/$imagen";
+            $i++;
+        }
+    }
+}
+//Esto es para mostrar productos de categoria falda para mujer o nina
+if (isset($_POST['falda'])) {
+    $falda = $_POST['falda'];
+}
+if ($falda) {
+    $query = " SELECT DISTINCT IMG.ID_USUARIO, IMG.ID_PRODUCTO, IMG.NOMBRE_IMAGEN, P.NOMBRE, P.CATEGORIA, P.TIPO_PERSONA, P.ID_PRODUCTO,P.TIPO FROM IMAGENES_PRODUCTO IMG, PRODUCTO P WHERE  P.ID_PRODUCTO=IMG.ID_PRODUCTO AND P.TIPO_PERSONA='{$usr}' AND P.CATEGORIA='falda' AND P.TIPO='{$IDP}' GROUP BY IMG.ID_PRODUCTO;";
+    $resultadoConsulta = mysqli_query($db, $query);
+    $i = 0;
+    if (mysqli_num_rows($resultadoConsulta) > 0) {
+        while ($fila = mysqli_fetch_assoc($resultadoConsulta)) {
+            $nombre[$i] = $fila['NOMBRE'];
+            $identificador[$i] = $fila['ID_PRODUCTO'];
+            $usuario = $fila['ID_USUARIO'];
+            $producto = $fila['ID_PRODUCTO'];
+            $imagen = $fila['NOMBRE_IMAGEN'] . $fila['NOMBRE_IMAGEN'];
+            $ruta[$i] = "/usr/$usuario/$producto/$imagen";
+            $i++;
+        }
+    }
+}
+//seccion de zapatillas de mujer o niña
 if (isset($_POST['zapatillas'])) {
     $zapatillas = $_POST['zapatillas'];
 }
@@ -257,7 +298,7 @@ if ($zapatillas) {
 </head>
 
 <body>
-    <header class="hombre">
+    <header class="mujer">
         <div class="contenedor">
             <div class="barra">
                 <a class="logo" href="index.html">
@@ -281,7 +322,10 @@ if ($zapatillas) {
                     <input type="submit" name="accesorio" value="accesorio">
                     <input type="submit" name="pants" value="pants">
                     <input type="submit" name="shorts" value="shorts">
+                    <input type="submit" name=vestido" value="vestido">
+                    <input type="submit" name="falda" value="falda">
                     <input type="submit" name="zapatillas" value="zapatillas">
+                    
 
 
                 </form>
@@ -310,18 +354,3 @@ if ($zapatillas) {
 
     </main>
 
-
-
-
-
-
-
-
-
-    <script src="JS/scripts.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
-    <script src="JS/app.js"></script>
-</body>
-
-</html>
