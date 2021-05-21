@@ -184,7 +184,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </select>
 
                     <label for="pproducto">Precio del producto:</label>
-                    <input type="number" placeholder="Escribe el precio del producto (0 en caso de ser una donación)" id="pproducto" name="pproducto" min="0" max="1000" class="required">
+                    <input type="number" placeholder="Escribe el precio del producto (0 en caso de ser una donación)" id="pproducto" name="pproducto" min="0" max="100000" class="required">
                 </div>
                 <div class="registro-formulario">
                     <label for="personaProducto">Esta prenda es para:</label>
