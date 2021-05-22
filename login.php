@@ -78,12 +78,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 
             </form>
             
-           <div class="centrar">
-           <button  class="boton" name="recuperarcontrasenia" id="recuperarcontrasenia">Recuperar contraseña</button>
-           </div>
-            <div id="contenido" name="contenido">
-
-            </div>
         </div>
 
 
@@ -100,27 +94,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script src="JS/app.js"></script>
     <script src="JS/scripts.js"></script>
 </body>
-<?php
-if(isset($_GET['error'])){
-    ?>
-     <script type="text/javascript">
-           var nodo=document.createElement("p");
-           nodo.innerHTML="NO EXISTE NINGUN USUARIO CON ESE CORREO";
-           nodo.classList.add("centrar");
-           document.getElementById('contenido').appendChild(nodo);
-       </script>
-    <?php
-}
-if(isset($_GET['acertar'])){
-    ?>
-     <script type="text/javascript">
-           var nodo=document.createElement("p");
-           nodo.innerHTML="Contraseña enviada";
-           nodo.classList.add("centrar");
-           document.getElementById('contenido').appendChild(nodo);
-       </script>
-    <?php
-}
 
-?>
 </html>

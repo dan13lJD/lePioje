@@ -6,20 +6,10 @@ require 'PHPMailer/Exception.php';
 require 'PHPMailer/PHPMailer.php';
 require 'PHPMailer/SMTP.php';
 require 'includes/app.php';
-$db = conectarDB();
+
 $mail = new PHPMailer(true);
-$para=$_POST['email'];
-echo $para;
-$query = " SELECT CORREO FROM USUARIOS WHERE CORREO='{$para}'";
-$resultadoConsulta = mysqli_query($db, $query);
-    if (mysqli_num_rows($resultadoConsulta) == 0) {
-        header("Location: /login.php?error=1");
-       ?>
-      
-       
-       <?php
-       
-    }else{
+
+
 
 
 try {
@@ -35,7 +25,7 @@ try {
 
     //Recipients
     $mail->setFrom('LePiojeOficial@gmail.com', 'LePioje');
-    $mail->addAddress($para);   //Add a recipient
+    $mail->addAddress("");   //Add a recipient
     // $mail->addAddress('ellen@example.com');               //Name is optional
     // $mail->addReplyTo('info@example.com', 'Information');
     // $mail->addCC('cc@example.com');
@@ -47,15 +37,13 @@ try {
 
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
-    $mail->Subject = 'ENVIO DE CONTRASEÑA';
-    $mail->Body    = 'Tu contraseña es:';
+    $mail->Subject = 'Bienvenido a Le Pioje';
+    $mail->Body    = 'Bienvenido a Le Pioje, las mejor ropa de segunda mano';
     // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
     $mail->send();
-    echo 'Se envio correctamente';
-    header("Location: /login.php?acertar=1");
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
-    }
+    
 ?>
