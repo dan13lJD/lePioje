@@ -353,4 +353,10 @@ if ($zapatillas) {
 
 
     </main>
+    <div class="contenedor">
+                <img src="Imagenes/ropa2.jpeg"  class="mostrar-img" alt="">
+                <div class="mostrar-img-texto">
+                <h1>UNETE A ESTA CAUSA</h1>
+                 </div>
+            </div>
 
