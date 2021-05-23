@@ -25,9 +25,9 @@ if($id){
         
         #eliminacion de imagenes
         while ($productos = mysqli_fetch_assoc($resultado)){
-                unlink($carpetaRaiz.'/'.$idUsuario.'/'.$id.'/'.$productos['NOMBRE_IMAGEN'].$productos['NOMBRE_IMAGEN']);                
+                unlink('includes'.'/'.$carpetaRaiz.'/'.$idUsuario.'/'.$id.'/'.$productos['NOMBRE_IMAGEN'].$productos['NOMBRE_IMAGEN']);                
         }
-        rmdir($carpetaRaiz.'/'.$idUsuario.'/'.$id.'/');
+        rmdir('includes'.'/'.$carpetaRaiz.'/'.$idUsuario.'/'.$id.'/');
 
         $query = "DELETE FROM IMAGENES_PRODUCTO  WHERE ID_PRODUCTO = {$id}";
         $resultadoEliminacion = mysqli_query($db, $query);

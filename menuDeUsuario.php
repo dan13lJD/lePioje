@@ -22,79 +22,6 @@ $query = "SELECT PRODUCTO.ID_PRODUCTO,
 
 $resultadoConsulta = mysqli_query($db, $query);
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-    #filtrado de datos
-    $nProducto = mysqli_real_escape_string($db, $_POST['nproducto']); //nombre
-    $mProducto = mysqli_real_escape_string($db, $_POST['mproducto']); //marca
-    $cProducto = mysqli_real_escape_string($db, $_POST['cproducto']); //color
-    $tProducto = mysqli_real_escape_string($db, $_POST['tproducto']); //talla
-    $tipoProducto = mysqli_real_escape_string($db, $_POST['tipoProducto']); //tipo (donacion o venta)
-    $pProducto = mysqli_real_escape_string($db, $_POST['pproducto']); //precio
-    $personaProducto = mysqli_real_escape_string($db, $_POST['personaProducto']); //quien va a usar la prenda
-    $matProducto = mysqli_real_escape_string($db, $_POST['materialProducto']); //material
-    $descProducto = mysqli_real_escape_string($db, $_POST['descripcionProducto']);
-    $catProducto = mysqli_real_escape_string($db, $_POST['catProducto']); //categoria del producto (zapatos, vestidos, etc)
-    #preparamos la consulta
-    $query = "INSERT INTO producto (NOMBRE, MARCA, COLOR, TALLA, PRECIO, DESCRIPCION, TIPO_PERSONA, CATEGORIA, MATERIAL, TIPO)
-              VALUES ('{$nProducto}',
-                      '{$mProducto}',
-                      '{$cProducto}',
-                      '{$tProducto}',
-                      '{$pProducto}',
-                      '{$descProducto}',
-                      '{$personaProducto}',
-                      '{$catProducto}',
-                      '{$matProducto}',
-                      '{$tipoProducto}'
-                      )";
-    #insertamos en la base de datos los datos correspondientes
-    $resultado = mysqli_query($db, $query);
-
-    #leemos el dato del ID en la base de datos 
-    $query = "SELECT ID_PRODUCTO FROM producto WHERE NOMBRE = '{$nProducto}'";
-    var_dump($query);
-    $resultado = mysqli_query($db, $query);
-    $idProducto = mysqli_fetch_assoc($resultado);
-    $id = $idProducto['ID_PRODUCTO'];
-
-    #subida de archivos al servidor
-    $carpeta_raiz = "usr";
-    $carpeta_usuario = $idUsuario;
-    $carpetaProducto = $id;
-
-    $nombre_imagen = '';
-
-    foreach ($_FILES["imagenes-producto"]['tmp_name'] as $key => $tmp_name) {
-
-        if ($_FILES["imagenes-producto"]["name"][$key]) {
-            #leemos la fuente de las imágenes            
-            $fuente = $_FILES["imagenes-producto"]["tmp_name"][$key];
-            #definimos el path donde se guardarán las imágenes
-            $carpeta = "$carpeta_raiz/$carpeta_usuario/$carpetaProducto";
-
-            if (!file_exists($carpeta)) {
-                mkdir($carpeta, 0777, true);
-            }
-            #generamos un nombre unico para las imagenes 
-            $nombre_imagen = md5(uniqid(rand(), true)) . ".jpg";
-
-            $dir = opendir($carpeta);
-            $target_path = $carpeta . '/' . $nombre_imagen;
-            $query = "INSERT INTO imagenes_producto(ID_PRODUCTO, ID_USUARIO, NOMBRE_IMAGEN) VALUES ($id, $idUsuario, '{$nombre_imagen}')";
-            if (move_uploaded_file($fuente, $target_path . $nombre_imagen)) {
-                #ya solo se debe cargar la referencia del nombre en la base de datos
-                $resultado = mysqli_query($db, $query);
-                if ($resultado) {
-                    echo "correcto ";
-                }
-            } else {
-                "error";
-            }
-        }
-    }
-}
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -156,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div id="seccion-1" class="seccion">
             <h2 class="centrar-texto">Publicar un producto:</h2>
 
-            <form class="registro-dividirFormulario" method="POST" action="menuDeUsuario.php" id="formulario-producto" enctype="multipart/form-data">
+            <form class="registro-dividirFormulario" method="POST" action="/includes/publicarProducto.php" id="formulario-producto" enctype="multipart/form-data">
                 <div class="registro-formulario">
 
                     <label for="nproducto">Nombre del producto:</label>
@@ -235,7 +162,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <?php while ($productos = mysqli_fetch_assoc($resultadoConsulta)) : ?>
                     <?php if ($auxP != $productos['ID_PRODUCTO']) : ?>
                         <div class="tarjeta-producto">
-                            <img class="centrador" src="/usr/<?php echo $idUsuario ?>/<?php echo $productos['ID_PRODUCTO'] ?>/<?php echo $productos['NOMBRE_IMAGEN'] . $productos['NOMBRE_IMAGEN'] ?>" alt="img">
+                            <img class="centrador" src="includes/usr/<?php echo $idUsuario ?>/<?php echo $productos['ID_PRODUCTO'] ?>/<?php echo $productos['NOMBRE_IMAGEN'] . $productos['NOMBRE_IMAGEN'] ?>" alt="img">
 
                             <p><span>ID:</span> <?php echo $productos['ID_PRODUCTO']; ?></p>
                             <p><span>Nombre producto:</span><?php echo $productos['NOMBRE']; ?></p>

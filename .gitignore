@@ -1,0 +1,4 @@
+#la carpera de composer
+/vendor/
+#la carpeta de usuarios
+/usr/
