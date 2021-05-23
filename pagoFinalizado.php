@@ -19,7 +19,7 @@ $NombreProductos = [];
 
 $queryCarrito = "SELECT ID_PRODUCTO FROM CARRITO WHERE ID_USUARIO = {$idUsuario}";
 $resultadoConsultaProductos = mysqli_query($db, $queryCarrito);
-if($exito){
+if($exito==true){
         while ($productos = mysqli_fetch_assoc($resultadoConsultaProductos)){
                 $queryProductos = "SELECT ID_PRODUCTO, NOMBRE, ID_USUARIO, PRECIO FROM PRODUCTO WHERE ID_PRODUCTO={$productos['ID_PRODUCTO']}";
                 $resultadoConsultaP = mysqli_query($db, $queryProductos);
