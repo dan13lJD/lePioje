@@ -37,9 +37,8 @@ if ($nom == null && $id == null) {
                 </a>
                 <nav class="navegacion" id="navegacion"">
                     <a href="menuDeUsuario.php" class="navegacion__enlace" id="iniciarsesion">Menu</a>
-                    <a href="index.php" class="navegacion__enlace" id="registrarse" >Cerrar sesion</a>
                     <a href="nosotros.php" class="navegacion__enlace" id="sobrenosotros"> Sobre nosotros</a>
-                    
+                    <a href="index.php" class="navegacion__enlace" id="registrarse" >Cerrar sesion</a>
                 </nav>
             </div>
 

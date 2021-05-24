@@ -70,7 +70,7 @@ $resultadoConsulta = mysqli_query($db, $query);
     <div id="contenido" class="seccion"></div>
     <!-- inicia el contenido del formulario para los productos ¡NO BORRAR, NO INTERFIERE CON TUS SECCIONES! 😒-->
     <main id="seccion-producto" class="seccion">
-        <h1 class="centrar-texto">Producto</h1>
+        <h1 class="centrar-texto">PRODUCTO</h1>
 
         <div class="menu-header-nav">
             <nav class="menu-nav">
@@ -78,10 +78,11 @@ $resultadoConsulta = mysqli_query($db, $query);
                 <button type="button" id="2">Mis productos</button>
             </nav>
         </div>
-
+        
         <!--Inicia el contenido del formulario para publicar un producto ¡NO BORRAR, NO INTERFIERE CON TUS SECCIONES! 😒-->
         <div id="seccion-1" class="seccion">
-            <h2 class="centrar-texto">Publicar un producto:</h2>
+            <h2 class="centrar-texto">PUBLICAR PRODUCTO</h2>
+            
 
             <form class="registro-dividirFormulario" method="POST" action="/includes/publicarProducto.php" id="formulario-producto" enctype="multipart/form-data">
                 <div class="registro-formulario">
@@ -184,7 +185,18 @@ $resultadoConsulta = mysqli_query($db, $query);
             <?php endif; ?>                
         </div>
     </main>
-    
+    <div class="contenedor">
+                <img src="Imagenes/ropa3.jpeg"  class="mostrar-img" alt="">
+                <div class="mostrar-img-texto">
+                <h1>UNETE A ESTA CAUSA</h1>
+                 </div>
+            </div>
+    <footer class="footer">
+        <div class="footer-texto">
+            <p>La mejor ropa de segunda mano en el mercado</p>
+        </div>
+
+    </footer>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
     <script src="JS/app.js"></script>

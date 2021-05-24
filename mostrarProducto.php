@@ -310,13 +310,12 @@ if ($zapatillas) {
 
     </main>
 
-
-
-
-
-
-
-
+            <div class="contenedor">
+                <img src="Imagenes/ropa1.jpeg"  class="mostrar-img" alt="">
+                <div class="mostrar-img-texto">
+                <h1>UNETE A ESTA CAUSA</h1>
+                 </div>
+            </div>
 
     <script src="JS/scripts.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
