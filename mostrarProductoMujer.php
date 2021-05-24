@@ -45,7 +45,7 @@ if ($camisa) {
             $usuario = $fila['ID_USUARIO'];
             $producto = $fila['ID_PRODUCTO'];
             $imagen = $fila['NOMBRE_IMAGEN'] . $fila['NOMBRE_IMAGEN'];
-            $ruta[$i] = "/usr/$usuario/$producto/$imagen";
+            $ruta[$i] = "includes/usr/$usuario/$producto/$imagen";
             $i++;
         }
     }
@@ -87,7 +87,7 @@ if ($chamarra) {
             $usuario = $fila['ID_USUARIO'];
             $producto = $fila['ID_PRODUCTO'];
             $imagen = $fila['NOMBRE_IMAGEN'] . $fila['NOMBRE_IMAGEN'];
-            $ruta[$i] = "/usr/$usuario/$producto/$imagen";
+            $ruta[$i] = "includes/usr/$usuario/$producto/$imagen";
             $i++;
         }
     }
