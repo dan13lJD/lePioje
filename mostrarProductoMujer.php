@@ -67,7 +67,7 @@ if ($pantalon) {
             $usuario = $fila['ID_USUARIO'];
             $producto = $fila['ID_PRODUCTO'];
             $imagen = $fila['NOMBRE_IMAGEN'] . $fila['NOMBRE_IMAGEN'];
-            $ruta[$i] = "/usr/$usuario/$producto/$imagen";
+            $ruta[$i] = "includes/usr/$usuario/$producto/$imagen";
             $i++;
         }
     }
@@ -108,7 +108,7 @@ if ($tenis) {
             $usuario = $fila['ID_USUARIO'];
             $producto = $fila['ID_PRODUCTO'];
             $imagen = $fila['NOMBRE_IMAGEN'] . $fila['NOMBRE_IMAGEN'];
-            $ruta[$i] = "/usr/$usuario/$producto/$imagen";
+            $ruta[$i] = "includes/usr/$usuario/$producto/$imagen";
             $i++;
         }
     }
@@ -133,7 +133,7 @@ if ($sudadera) {
             $usuario = $fila['ID_USUARIO'];
             $producto = $fila['ID_PRODUCTO'];
             $imagen = $fila['NOMBRE_IMAGEN'] . $fila['NOMBRE_IMAGEN'];
-            $ruta[$i] = "/usr/$usuario/$producto/$imagen";
+            $ruta[$i] = "includes/usr/$usuario/$producto/$imagen";
             $i++;
         }
     }
@@ -153,7 +153,7 @@ if ($sueter) {
             $usuario = $fila['ID_USUARIO'];
             $producto = $fila['ID_PRODUCTO'];
             $imagen = $fila['NOMBRE_IMAGEN'] . $fila['NOMBRE_IMAGEN'];
-            $ruta[$i] = "/usr/$usuario/$producto/$imagen";
+            $ruta[$i] = "includes/usr/$usuario/$producto/$imagen";
             $i++;
         }
     }
@@ -173,7 +173,7 @@ if ($accesorio) {
             $usuario = $fila['ID_USUARIO'];
             $producto = $fila['ID_PRODUCTO'];
             $imagen = $fila['NOMBRE_IMAGEN'] . $fila['NOMBRE_IMAGEN'];
-            $ruta[$i] = "/usr/$usuario/$producto/$imagen";
+            $ruta[$i] = "includes/usr/$usuario/$producto/$imagen";
             $i++;
         }
     }
@@ -193,7 +193,7 @@ if ($pants) {
             $usuario = $fila['ID_USUARIO'];
             $producto = $fila['ID_PRODUCTO'];
             $imagen = $fila['NOMBRE_IMAGEN'] . $fila['NOMBRE_IMAGEN'];
-            $ruta[$i] = "/usr/$usuario/$producto/$imagen";
+            $ruta[$i] = "includes/usr/$usuario/$producto/$imagen";
             $i++;
         }
     }
@@ -213,7 +213,7 @@ if ($short) {
             $usuario = $fila['ID_USUARIO'];
             $producto = $fila['ID_PRODUCTO'];
             $imagen = $fila['NOMBRE_IMAGEN'] . $fila['NOMBRE_IMAGEN'];
-            $ruta[$i] = "/usr/$usuario/$producto/$imagen";
+            $ruta[$i] = "includes/usr/$usuario/$producto/$imagen";
             $i++;
         }
     }
@@ -233,7 +233,7 @@ if ($vestido) {
             $usuario = $fila['ID_USUARIO'];
             $producto = $fila['ID_PRODUCTO'];
             $imagen = $fila['NOMBRE_IMAGEN'] . $fila['NOMBRE_IMAGEN'];
-            $ruta[$i] = "/usr/$usuario/$producto/$imagen";
+            $ruta[$i] = "includes/usr/$usuario/$producto/$imagen";
             $i++;
         }
     }
@@ -253,7 +253,7 @@ if ($falda) {
             $usuario = $fila['ID_USUARIO'];
             $producto = $fila['ID_PRODUCTO'];
             $imagen = $fila['NOMBRE_IMAGEN'] . $fila['NOMBRE_IMAGEN'];
-            $ruta[$i] = "/usr/$usuario/$producto/$imagen";
+            $ruta[$i] = "includes/usr/$usuario/$producto/$imagen";
             $i++;
         }
     }
@@ -273,7 +273,7 @@ if ($zapatillas) {
             $usuario = $fila['ID_USUARIO'];
             $producto = $fila['ID_PRODUCTO'];
             $imagen = $fila['NOMBRE_IMAGEN'] . $fila['NOMBRE_IMAGEN'];
-            $ruta[$i] = "/usr/$usuario/$producto/$imagen";
+            $ruta[$i] = "includes/usr/$usuario/$producto/$imagen";
             $i++;
         }
     }

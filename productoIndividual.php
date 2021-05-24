@@ -97,10 +97,10 @@ $resultadoExistenciaCarrito = mysqli_query($db, $query);
 
                     <ul class="galeria">
                         <?php while ($imagen = mysqli_fetch_assoc($resultadoConsultaImagenes)) : ?>
-                            <li><a href="#img<?php echo $imagen['ID_IMAGEN']; ?>"><img src="/usr/<?php echo $imagen['ID_USUARIO'] ?>/<?php echo $ID ?>/<?php echo $imagen['NOMBRE_IMAGEN'] . $imagen['NOMBRE_IMAGEN'] ?>" alt="img"></a></li>
+                            <li><a href="#img<?php echo $imagen['ID_IMAGEN']; ?>"><img src="includes/usr/<?php echo $imagen['ID_USUARIO'] ?>/<?php echo $ID ?>/<?php echo $imagen['NOMBRE_IMAGEN'] . $imagen['NOMBRE_IMAGEN'] ?>" alt="img"></a></li>
                             <div class="modal" id="img<?php echo $imagen['ID_IMAGEN']; ?>">
                                 <div class="imagen">                                    
-                                    <a href="#img<?php echo $imagen['ID_IMAGEN']; ?>"><img src="/usr/<?php echo $imagen['ID_USUARIO'] ?>/<?php echo $ID ?>/<?php echo $imagen['NOMBRE_IMAGEN'] . $imagen['NOMBRE_IMAGEN'] ?>"> </a>
+                                    <a href="#img<?php echo $imagen['ID_IMAGEN']; ?>"><img src="includes/usr/<?php echo $imagen['ID_USUARIO'] ?>/<?php echo $ID ?>/<?php echo $imagen['NOMBRE_IMAGEN'] . $imagen['NOMBRE_IMAGEN'] ?>"> </a>
                                 </div>
                                 <a class="cerrar" href="">X</a>
                             </div> 
