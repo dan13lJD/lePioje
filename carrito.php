@@ -45,7 +45,7 @@ $total = 0;
         <main>
                 <h1 class="centrar-texto">Carrito de compras</h1>
 
-                
+                <?php if (mysqli_num_rows($resultadoConsultaProductos) > 0) : ?>
                         <table class="productos">
                                 <thead>
                                         <tr>
@@ -67,25 +67,31 @@ $total = 0;
                                                                 <td><?php echo $p['MARCA']; ?></td>
                                                                 <td><?php echo $p['TALLA']; ?></td>
                                                                 <td><?php echo "$" . $p['PRECIO'] . ".00"; ?></td>
-                                                                <?php $total = $total + $p['PRECIO']; ?>                                                               
-                                                        </tr>                                                                                                        
+                                                                <?php $total = $total + $p['PRECIO']; ?>
+                                                        </tr>
                                                 <?php endwhile; ?>
 
                                         <?php endwhile; ?>
-                                </tbody>                              
+                                </tbody>
                         </table>
-                                                                
-                
-                <div class="total">
-                        <p><span>TOTAL:</span> <?php echo "$" . $total . ".00"; ?> </p>
-                        <form action="pago.php" method="POST">
-                                <div class="izquierda">
-                                        <!-- <a href="#" class="boton">Proceder al pago</a> -->                                                                                
-                                        <input type="hidden" value="<?php echo $idUsuario?>" name="usuario">
-                                        <input type="submit" value="Proceder al pago" class="boton">
-                                </div>
-                        </form>
-                </div>
+
+
+                        <div class="total">
+                                <p><span>TOTAL:</span> <?php echo "$" . $total . ".00"; ?> </p>
+                                <form action="pago.php" method="POST">
+                                        <div class="izquierda">
+                                                <!-- <a href="#" class="boton">Proceder al pago</a> -->
+                                                <input type="hidden" value="<?php echo $idUsuario ?>" name="usuario">
+                                                <input type="submit" value="Proceder al pago" class="boton">
+                                        </div>
+                                </form>
+                        </div>
+                <?php else : ?>
+                        <div class="tarjeta-producto">
+                                <img src="iconos/caja-blanca-vacia.svg" alt="vacio">
+                                <p class="centrar-texto"><span>Aún no tienes productos en tu carrito.</span></p>
+                        </div>
+                <?php endif; ?>
         </main>
 
         <footer class="footer">
