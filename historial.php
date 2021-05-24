@@ -36,7 +36,7 @@ $venta = mysqli_query($db, $query);
     <header>
 
         <div class="menu-titulo">
-            <h1>VENTAS</h1>
+            <h1>COMPRAS</h1>
         </div>
     </header>
     <main>

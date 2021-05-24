@@ -52,7 +52,7 @@ function validarFormulario() {
                 },
                 descripcionProducto: {
                     required: true,
-                    maxlength: 50
+                    maxlength: 1000
                 }
             },
             messages: {
